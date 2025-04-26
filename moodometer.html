@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speedometer Mood Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      text-align: center;
+      padding-top: 50px;
+    }
+    h1 {
+      font-size: 36px;
+      color: #333;
+    }
+    .speedometer {
+      width: 300px;
+      height: 150px;
+      border-radius: 150px 150px 0 0;
+      background: linear-gradient(to right, #f44336, #ff9800, #ffeb3b, #8bc34a, #03a9f4);
+      position: relative;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .speedometer .indicator {
+      width: 10px;
+      height: 200px;
+      background-color: #333;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center bottom;
+      transition: transform 0.3s ease-in-out;
+    }
+    .speedometer button {
+      position: absolute;
+      bottom: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+    }
+    .emoji-button {
+      font-size: 40px;
+      margin: 0 20px;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    #thanks {
+      margin-top: 30px;
+      font-size: 24px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>How was your mood?</h1>
+
+  <div class="speedometer">
+    <div class="indicator" id="indicator"></div>
+  </div>
+
+  <div>
+    <button class="emoji-button" onclick="setMood('Very Bad', -135)">😡</button>
+    <button class="emoji-button" onclick="setMood('Bad', -90)">😟</button>
+    <button class="emoji-button" onclick="setMood('Neutral', 0)">😐</button>
+    <button class="emoji-button" onclick="setMood('Good', 90)">🙂</button>
+    <button class="emoji-button" onclick="setMood('Very Good', 135)">😄</button>
+  </div>
+
+  <div id="thanks"></div>
+
+  <script>
+    function setMood(mood, angle) {
+      // Rotate the indicator
+      document.getElementById('indicator').style.transform = 'rotate(' + angle + 'deg)';
+      
+      // Show thank you message
+      document.getElementById('thanks').innerText = "Thank you for your feedback! You selected: " + mood;
+    }
+  </script>
+
+</body>
+</html>
